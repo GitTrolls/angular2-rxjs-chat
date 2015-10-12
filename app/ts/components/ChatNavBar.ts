@@ -1,11 +1,11 @@
 /// <reference path="../../typings/app.d.ts" />
-import {Component, View, OnInit} from "angular2/angular2";
+import {Component, View, LifecycleEvent} from "angular2/angular2";
 import {MessagesService, ThreadsService} from "../services/services";
 import {Message, Thread} from "models";
 import * as _ from "underscore";
 
 @Component({
-
+  lifecycle: [ LifecycleEvent.onInit ],
   selector: "nav-bar"
 })
 @View({
@@ -28,7 +28,7 @@ import * as _ from "underscore";
 
   `
 })
-export class ChatNavBar implements OnInit {
+export class ChatNavBar {
   unreadMessagesCount: number;
 
   constructor(public messagesService: MessagesService,
